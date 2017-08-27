@@ -3,10 +3,12 @@ package iv_conciseness_demo;
 public class Recommendation {
     private final int id;
     private final int cost;
+    private boolean soldout;
 
-    public Recommendation(final int id, final int cost) {
+    public Recommendation(final int id, final int cost, boolean soldout) {
         this.id = id;
         this.cost = cost;
+        this.soldout = soldout;
     }
 
     public int getCost() {
@@ -15,5 +17,9 @@ public class Recommendation {
 
     public int getId() {
         return id;
+    }
+
+    public boolean isSoldout() {
+        return soldout;
     }
 }

@@ -17,9 +17,10 @@ public class RecommendationMetrics {
 
         for (Product product : products) {
             List<Recommendation> recos = recoFetcher.fetchRecosFor(product);
-
             for (Recommendation reco : recos) {
-                sum += reco.getCost();
+                if(!reco.isSoldout()) {
+                    sum += reco.getCost();
+                }
             }
         }
 

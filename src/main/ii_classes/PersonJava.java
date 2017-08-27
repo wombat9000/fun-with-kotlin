@@ -1,4 +1,4 @@
-package ii_interop;
+package main.ii_classes;
 
 public class PersonJava {
 

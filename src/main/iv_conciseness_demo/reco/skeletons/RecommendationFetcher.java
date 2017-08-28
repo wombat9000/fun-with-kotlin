@@ -1,4 +1,4 @@
-package iv_conciseness_demo.skeletons;
+package iv_conciseness_demo.reco.skeletons;
 
 import java.util.List;
 

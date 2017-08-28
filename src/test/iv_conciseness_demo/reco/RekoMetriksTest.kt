@@ -1,8 +1,8 @@
-package iv_conciseness_demo
+package iv_conciseness_demo.reco
 
-import iv_conciseness_demo.skeletons.Product
-import iv_conciseness_demo.skeletons.Recommendation
-import iv_conciseness_demo.skeletons.RecommendationFetcher
+import iv_conciseness_demo.reco.skeletons.Product
+import iv_conciseness_demo.reco.skeletons.Recommendation
+import iv_conciseness_demo.reco.skeletons.RecommendationFetcher
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
 import org.mockito.BDDMockito.given
@@ -11,8 +11,7 @@ import org.mockito.MockitoAnnotations.initMocks
 import org.testng.annotations.DataProvider
 import org.testng.annotations.Test
 
-
-class RekommendationMetriksTest {
+class RekoMetriksTest {
 
     @Mock private
     lateinit var recoFetcher: RecommendationFetcher
@@ -28,7 +27,7 @@ class RekommendationMetriksTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    fun shouldHandleEmptyInput(testee: RecommendationMetrics) {
+    fun shouldHandleEmptyInput(testee: RecoMetrics) {
         val zeroProducts = listOf<Product>()
 
         val result = testee.recoPriceSum(zeroProducts)
@@ -37,7 +36,7 @@ class RekommendationMetriksTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    fun shouldWorkForSingleProduct(testee: RecommendationMetrics) {
+    fun shouldWorkForSingleProduct(testee: RecoMetrics) {
         val product = Product()
         val singleProduct = listOf(product)
 
@@ -51,7 +50,7 @@ class RekommendationMetriksTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    fun shouldWorkForMultipleProducts(testee: RecommendationMetrics) {
+    fun shouldWorkForMultipleProducts(testee: RecoMetrics) {
         val product = Product()
         val anotherProduct = Product()
         val twoProducts = listOf(product, anotherProduct)
@@ -70,7 +69,7 @@ class RekommendationMetriksTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    fun shouldWorkForMultipleRecosForSameProduct(testee: RecommendationMetrics) {
+    fun shouldWorkForMultipleRecosForSameProduct(testee: RecoMetrics) {
         val product = Product()
         val twoProducts = listOf(product)
 
@@ -85,7 +84,7 @@ class RekommendationMetriksTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    fun shouldNotConsiderSoldoutRecos(testee: RecommendationMetrics) {
+    fun shouldNotConsiderSoldoutRecos(testee: RecoMetrics) {
         val product = Product()
         val twoProducts = listOf(product)
 

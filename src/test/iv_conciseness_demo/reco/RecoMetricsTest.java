@@ -1,8 +1,8 @@
-package iv_conciseness_demo;
+package iv_conciseness_demo.reco;
 
-import iv_conciseness_demo.skeletons.Product;
-import iv_conciseness_demo.skeletons.Recommendation;
-import iv_conciseness_demo.skeletons.RecommendationFetcher;
+import iv_conciseness_demo.reco.skeletons.Product;
+import iv_conciseness_demo.reco.skeletons.Recommendation;
+import iv_conciseness_demo.reco.skeletons.RecommendationFetcher;
 import org.mockito.Mock;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.is;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.MockitoAnnotations.initMocks;
 
-public class RecommendationMetricsTest {
+public class RecoMetricsTest {
 
     @Mock
     private RecommendationFetcher recoFetcher;
@@ -32,7 +32,7 @@ public class RecommendationMetricsTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    public void shouldHandleEmptyInput(final RecommendationMetrics testee) {
+    public void shouldHandleEmptyInput(final RecoMetrics testee) {
         final List<Product> zeroProducts = asList();
 
         final int result = testee.recoPriceSum(zeroProducts);
@@ -41,7 +41,7 @@ public class RecommendationMetricsTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    public void shouldWorkForSingleProduct(final RecommendationMetrics testee) {
+    public void shouldWorkForSingleProduct(final RecoMetrics testee) {
         final Product product = new Product();
         final List<Product> singleProduct = asList(product);
 
@@ -55,7 +55,7 @@ public class RecommendationMetricsTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    public void shouldWorkForMultipleProducts(final RecommendationMetrics testee) {
+    public void shouldWorkForMultipleProducts(final RecoMetrics testee) {
         final Product product = new Product();
         final Product anotherProduct = new Product();
         final List<Product> twoProducts = asList(product, anotherProduct);
@@ -74,7 +74,7 @@ public class RecommendationMetricsTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    public void shouldWorkForMultipleRecosForSameProduct(final RecommendationMetrics testee) {
+    public void shouldWorkForMultipleRecosForSameProduct(final RecoMetrics testee) {
         final Product product = new Product();
         final List<Product> twoProducts = asList(product);
 
@@ -89,7 +89,7 @@ public class RecommendationMetricsTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    public void shouldNotConsiderSoldoutRecos(final RecommendationMetrics testee) {
+    public void shouldNotConsiderSoldoutRecos(final RecoMetrics testee) {
         final Product product = new Product();
         final List<Product> twoProducts = asList(product);
 

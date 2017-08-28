@@ -1,12 +1,12 @@
-package iv_conciseness_demo;
+package iv_conciseness_demo.reco;
 
-import iv_conciseness_demo.skeletons.Product;
-import iv_conciseness_demo.skeletons.Recommendation;
-import iv_conciseness_demo.skeletons.RecommendationFetcher;
+import iv_conciseness_demo.reco.skeletons.Product;
+import iv_conciseness_demo.reco.skeletons.Recommendation;
+import iv_conciseness_demo.reco.skeletons.RecommendationFetcher;
 
 import java.util.List;
 
-public class StreamedMetrics implements RecommendationMetrics {
+public class StreamedMetrics implements RecoMetrics {
 
     private final RecommendationFetcher recoFetcher;
 

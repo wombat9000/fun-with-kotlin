@@ -13,7 +13,6 @@ public class LoopedMetrics implements RecommendationMetrics {
 
     @Override
     public int recoPriceSum(List<Product> products) {
-
         int sum = 0;
 
         for (Product product : products) {

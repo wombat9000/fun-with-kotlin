@@ -25,6 +25,10 @@ public class RecommendationMetricsTest {
         return new StreamedMetrics(recoFetcher);
     }
 
+    private RecommendationMetrics kotlinTestee() {
+        return new KotlinMetrics(recoFetcher);
+    }
+
     @DataProvider(name = "testSubjects")
     public Object[][] testSubjects() {
         initMocks(this);
@@ -32,6 +36,7 @@ public class RecommendationMetricsTest {
         return new Object[][] {
                 { loopsTestee() },
                 { streamsTestee() },
+                { kotlinTestee() },
         };
     }
 

@@ -1,5 +1,9 @@
 package iv_conciseness_demo;
 
+import iv_conciseness_demo.skeletons.Product;
+import iv_conciseness_demo.skeletons.Recommendation;
+import iv_conciseness_demo.skeletons.RecommendationFetcher;
+
 import java.util.List;
 
 public class StreamedMetrics implements RecommendationMetrics {
@@ -11,7 +15,7 @@ public class StreamedMetrics implements RecommendationMetrics {
     }
 
     @Override
-    public int recoPriceSum(List<Product> products) {
+    public int recoPriceSum(final List<Product> products) {
         return products.stream()
                 .map(recoFetcher::fetchRecosFor)
                 .flatMap(List::stream)

@@ -1,5 +1,8 @@
 package iv_conciseness_demo;
 
+import iv_conciseness_demo.skeletons.Product;
+import iv_conciseness_demo.skeletons.Recommendation;
+import iv_conciseness_demo.skeletons.RecommendationFetcher;
 
 import java.util.List;
 
@@ -12,11 +15,11 @@ public class LoopedMetrics implements RecommendationMetrics {
     }
 
     @Override
-    public int recoPriceSum(List<Product> products) {
+    public int recoPriceSum(final List<Product> products) {
         int sum = 0;
 
         for (Product product : products) {
-            List<Recommendation> recos = recoFetcher.fetchRecosFor(product);
+            final List<Recommendation> recos = recoFetcher.fetchRecosFor(product);
             for (Recommendation reco : recos) {
                 if(reco.isAvailable()) {
                     sum += reco.getCost();

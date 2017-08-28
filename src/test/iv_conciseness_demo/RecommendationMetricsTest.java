@@ -1,5 +1,8 @@
 package iv_conciseness_demo;
 
+import iv_conciseness_demo.skeletons.Product;
+import iv_conciseness_demo.skeletons.Recommendation;
+import iv_conciseness_demo.skeletons.RecommendationFetcher;
 import org.mockito.Mock;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

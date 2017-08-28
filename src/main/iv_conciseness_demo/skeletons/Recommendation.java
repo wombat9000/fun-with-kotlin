@@ -1,4 +1,4 @@
-package iv_conciseness_demo;
+package iv_conciseness_demo.skeletons;
 
 public class Recommendation {
     private final int id;

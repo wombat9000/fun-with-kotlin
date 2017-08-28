@@ -2,7 +2,6 @@ package iv_conciseness_demo.search;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,8 +17,8 @@ public class LoopedMetrics implements SearchMetrics {
 
     @NotNull
     @Override
-    public Map<Produkt, Integer> fetchTopTwoResultCounts(@NotNull List<String> searchTerms) {
-        final Map<Produkt, Integer> result = new HashMap<>();
+    public Map<Produkt, Long> fetchTopTwoResultCounts(@NotNull final List<String> searchTerms) {
+        final Map<Produkt, Long> result = new HashMap<>();
 
         for(String searchTerm: searchTerms) {
             final List<Produkt> produkts = searchEngine.searchFor(searchTerm);
@@ -30,7 +29,7 @@ public class LoopedMetrics implements SearchMetrics {
 
             for (int i = 0, produktsSize = produkts.size(); i < produktsSize; i++) {
                 final Produkt produkt = produkts.get(i);
-                final Integer currentCount = result.getOrDefault(produkt, 0);
+                final Long currentCount = result.getOrDefault(produkt, 0L);
                 result.put(produkt, currentCount + 1);
                 if (i == 1) {
                     break;

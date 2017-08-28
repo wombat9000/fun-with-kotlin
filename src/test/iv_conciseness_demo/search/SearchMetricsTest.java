@@ -1,7 +1,7 @@
 package iv_conciseness_demo.search;
 
 import org.mockito.Mock;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.Map;
@@ -19,77 +19,78 @@ public class SearchMetricsTest {
     @Mock
     private SearchEngine searchEngine;
 
-    private LoopedMetrics testee;
-
-    @BeforeMethod
-    public void setup() {
+    @DataProvider(name = "testSubjects")
+    public Object[][] testSubjects() {
         initMocks(this);
-        testee = new LoopedMetrics(searchEngine);
 
+        return new Object[][] {
+                {new LoopedMetrics(searchEngine)},
+                {new StreamedMetrics(searchEngine)},
+        };
     }
 
-    @Test
-    public void shouldHandleEmptyInput() {
-        Map<Produkt, Integer> result = testee.fetchTopTwoResultCounts(emptyList());
+    @Test(dataProvider = "testSubjects")
+    public void shouldHandleEmptyInput(SearchMetrics testee) {
+        Map<Produkt, Long> result = testee.fetchTopTwoResultCounts(emptyList());
 
         assertThat(result, is(emptyMap()));
     }
 
-    @Test
-    public void shouldHandleSingleTermWithSingleResult() {
+    @Test(dataProvider = "testSubjects")
+    public void shouldHandleSingleTermWithSingleResult(SearchMetrics testee) {
         Produkt someProdukt = new Produkt("someProdukt");
         given(searchEngine.searchFor("someTerm")).willReturn(singletonList(someProdukt));
 
-        Map<Produkt, Integer> result = testee.fetchTopTwoResultCounts(singletonList("someTerm"));
+        Map<Produkt, Long> result = testee.fetchTopTwoResultCounts(singletonList("someTerm"));
 
-        assertThat(result, is(singletonMap(someProdukt, 1)));
+        assertThat(result, is(singletonMap(someProdukt, 1L)));
     }
 
-    @Test
-    public void shouldHandleTwoTermsWithSameResult() {
+    @Test(dataProvider = "testSubjects")
+    public void shouldHandleTwoTermsWithSameResult(SearchMetrics testee) {
         Produkt someProdukt = new Produkt("someProdukt");
         given(searchEngine.searchFor("someTerm")).willReturn(singletonList(someProdukt));
         given(searchEngine.searchFor("anotherTerm")).willReturn(singletonList(someProdukt));
 
-        Map<Produkt, Integer> result = testee.fetchTopTwoResultCounts(asList("someTerm", "anotherTerm"));
+        Map<Produkt, Long> result = testee.fetchTopTwoResultCounts(asList("someTerm", "anotherTerm"));
 
-        assertThat(result, is(singletonMap(someProdukt, 2)));
+        assertThat(result, is(singletonMap(someProdukt, 2L)));
     }
 
-    @Test
-    public void shouldHandleSingleTermWithMultipleResults() {
+    @Test(dataProvider = "testSubjects")
+    public void shouldHandleSingleTermWithMultipleResults(SearchMetrics testee) {
         Produkt someProdukt = new Produkt("someProdukt");
         Produkt anotherProdukt = new Produkt("anotherProdukt");
         given(searchEngine.searchFor("someTerm")).willReturn(asList(someProdukt, anotherProdukt));
 
-        Map<Produkt, Integer> result = testee.fetchTopTwoResultCounts(asList("someTerm"));
+        Map<Produkt, Long> result = testee.fetchTopTwoResultCounts(asList("someTerm"));
 
-        assertThat(result.get(someProdukt), is(1));
-        assertThat(result.get(anotherProdukt), is(1));
+        assertThat(result.get(someProdukt), is(1L));
+        assertThat(result.get(anotherProdukt), is(1L));
     }
 
-    @Test
-    public void shouldOnlyConsiderFirstTwoResults() {
+    @Test(dataProvider = "testSubjects")
+    public void shouldOnlyConsiderFirstTwoResults(SearchMetrics testee) {
         Produkt someProdukt = new Produkt("someProdukt");
         Produkt anotherProdukt = new Produkt("anotherProdukt");
         Produkt disregardedProdukt = new Produkt("disregardedProdukt");
         given(searchEngine.searchFor("someTerm")).willReturn(asList(someProdukt, anotherProdukt, disregardedProdukt));
 
-        Map<Produkt, Integer> result = testee.fetchTopTwoResultCounts(asList("someTerm"));
+        Map<Produkt, Long> result = testee.fetchTopTwoResultCounts(asList("someTerm"));
 
-        assertThat(result.get(someProdukt), is(1));
-        assertThat(result.get(anotherProdukt), is(1));
+        assertThat(result.get(someProdukt), is(1L));
+        assertThat(result.get(anotherProdukt), is(1L));
         assertFalse(result.containsKey(disregardedProdukt));
     }
 
-    @Test
-    public void shouldHandleMissingResponses() {
+    @Test(dataProvider = "testSubjects")
+    public void shouldHandleMissingResponses(SearchMetrics testee) {
         Produkt someProdukt = new Produkt("someProdukt");
         given(searchEngine.searchFor("someTerm")).willReturn(null);
         given(searchEngine.searchFor("anotherTerm")).willReturn(asList(someProdukt));
 
-        Map<Produkt, Integer> result = testee.fetchTopTwoResultCounts(asList("someTerm", "anotherTerm"));
+        Map<Produkt, Long> result = testee.fetchTopTwoResultCounts(asList("someTerm", "anotherTerm"));
 
-        assertThat(result.get(someProdukt), is(1));
+        assertThat(result.get(someProdukt), is(1L));
     }
 }

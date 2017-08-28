@@ -15,19 +15,24 @@ import static org.mockito.MockitoAnnotations.initMocks;
 public class RecommendationMetricsTest {
 
     @Mock
-    RecommendationFetcher recoFetcher;
+    private RecommendationFetcher recoFetcher;
 
     private RecommendationMetrics loopsTestee() {
-        initMocks(this);
-        return new RecommendationMetrics(recoFetcher);
+        return new LoopedMetrics(recoFetcher);
+    }
+
+    private RecommendationMetrics streamsTestee() {
+        return new StreamedMetrics(recoFetcher);
     }
 
     @DataProvider(name = "testSubjects")
     public Object[][] testSubjects() {
+        initMocks(this);
+
         return new Object[][] {
                 { loopsTestee() },
+                { streamsTestee() },
         };
-
     }
 
     @Test(dataProvider = "testSubjects")

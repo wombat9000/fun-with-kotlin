@@ -19,7 +19,7 @@ public class Recommendation {
         return id;
     }
 
-    public boolean isSoldout() {
-        return soldout;
+    public boolean isAvailable() {
+        return !soldout;
     }
 }

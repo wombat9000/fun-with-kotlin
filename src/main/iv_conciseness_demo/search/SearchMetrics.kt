@@ -2,5 +2,5 @@ package iv_conciseness_demo.search
 
 interface SearchMetrics {
 
-    fun fetchResultCounts(searchTerms: List<String>): Map<Produkt, Int>
+    fun fetchTopTwoResultCounts(searchTerms: List<String>): Map<Produkt, Int>
 }

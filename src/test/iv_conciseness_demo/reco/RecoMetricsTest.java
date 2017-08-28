@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import java.util.Arrays;
 import java.util.List;
 
+import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.BDDMockito.given;
@@ -103,8 +104,4 @@ public class RecoMetricsTest {
         assertThat(result, is(10));
     }
 
-    @SafeVarargs
-    private final <T> List<T> asList(final T... items) {
-        return Arrays.asList(items);
-    }
 }

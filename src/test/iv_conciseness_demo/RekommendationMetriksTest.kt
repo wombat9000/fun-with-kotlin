@@ -14,29 +14,17 @@ import org.testng.annotations.Test
 
 class RekommendationMetriksTest {
 
-    @Mock
+    @Mock private
     lateinit var recoFetcher: RecommendationFetcher
-
-    private fun loopsTestee(): RecommendationMetrics {
-        return LoopedMetrics(recoFetcher)
-    }
-
-    private fun streamsTestee(): RecommendationMetrics {
-        return StreamedMetrics(recoFetcher)
-    }
-
-    private fun kotlinTestee(): RecommendationMetrics {
-        return KotlinMetrics(recoFetcher)
-    }
 
     @DataProvider(name = "testSubjects")
     fun testSubjects(): Array<Array<Any>> {
         initMocks(this)
 
         return arrayOf(
-                arrayOf<Any>(loopsTestee()),
-                arrayOf<Any>(streamsTestee()),
-                arrayOf<Any>(kotlinTestee()))
+                arrayOf<Any>(LoopedMetrics(recoFetcher)),
+                arrayOf<Any>(StreamedMetrics(recoFetcher)),
+                arrayOf<Any>(KotlinMetrics(recoFetcher)))
     }
 
     @Test(dataProvider = "testSubjects")

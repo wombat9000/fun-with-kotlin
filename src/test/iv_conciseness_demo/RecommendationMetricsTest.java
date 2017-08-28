@@ -20,26 +20,14 @@ public class RecommendationMetricsTest {
     @Mock
     private RecommendationFetcher recoFetcher;
 
-    private RecommendationMetrics loopsTestee() {
-        return new LoopedMetrics(recoFetcher);
-    }
-
-    private RecommendationMetrics streamsTestee() {
-        return new StreamedMetrics(recoFetcher);
-    }
-
-    private RecommendationMetrics kotlinTestee() {
-        return new KotlinMetrics(recoFetcher);
-    }
-
     @DataProvider(name = "testSubjects")
     public Object[][] testSubjects() {
         initMocks(this);
 
         return new Object[][] {
-                { loopsTestee() },
-                { streamsTestee() },
-                { kotlinTestee() },
+                {new LoopedMetrics(recoFetcher)},
+                {new StreamedMetrics(recoFetcher)},
+                {new KotlinMetrics(recoFetcher)},
         };
     }
 

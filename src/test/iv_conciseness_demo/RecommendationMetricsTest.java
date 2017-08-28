@@ -32,8 +32,8 @@ public class RecommendationMetricsTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    public void shouldHandleEmptyInput(RecommendationMetrics testee) {
-        List<Product> zeroProducts = asList();
+    public void shouldHandleEmptyInput(final RecommendationMetrics testee) {
+        final List<Product> zeroProducts = asList();
 
         final int result = testee.recoPriceSum(zeroProducts);
 
@@ -41,70 +41,70 @@ public class RecommendationMetricsTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    public void shouldWorkForSingleProduct(RecommendationMetrics testee) {
-        Product product = new Product();
-        List<Product> singleProduct = asList(product);
+    public void shouldWorkForSingleProduct(final RecommendationMetrics testee) {
+        final Product product = new Product();
+        final List<Product> singleProduct = asList(product);
 
-        Recommendation recoWithCost10 = new Recommendation(1,10, false);
-        List<Recommendation> recommenations = asList(recoWithCost10);
+        final Recommendation recoWithCost10 = new Recommendation(1,10, false);
+        final List<Recommendation> recommenations = asList(recoWithCost10);
 
         given(recoFetcher.fetchRecosFor(product)).willReturn(recommenations);
 
-        int result = testee.recoPriceSum(singleProduct);
+        final int result = testee.recoPriceSum(singleProduct);
         assertThat(result, is(10));
     }
 
     @Test(dataProvider = "testSubjects")
-    public void shouldWorkForMultipleProducts(RecommendationMetrics testee) {
-        Product product = new Product();
-        Product anotherProduct = new Product();
-        List<Product> twoProducts = asList(product, anotherProduct);
+    public void shouldWorkForMultipleProducts(final RecommendationMetrics testee) {
+        final Product product = new Product();
+        final Product anotherProduct = new Product();
+        final List<Product> twoProducts = asList(product, anotherProduct);
 
-        Recommendation recoWithCost10 = new Recommendation(1,10, false);
-        List<Recommendation> firstSetOfRecos = asList(recoWithCost10);
+        final Recommendation recoWithCost10 = new Recommendation(1,10, false);
+        final List<Recommendation> firstSetOfRecos = asList(recoWithCost10);
 
-        Recommendation recoWithCost20 = new Recommendation(2,20, false);
-        List<Recommendation> secondSetOfRecos = asList(recoWithCost20);
+        final Recommendation recoWithCost20 = new Recommendation(2,20, false);
+        final List<Recommendation> secondSetOfRecos = asList(recoWithCost20);
 
         given(recoFetcher.fetchRecosFor(product)).willReturn(firstSetOfRecos);
         given(recoFetcher.fetchRecosFor(anotherProduct)).willReturn(secondSetOfRecos);
 
-        int result = testee.recoPriceSum(twoProducts);
+        final int result = testee.recoPriceSum(twoProducts);
         assertThat(result, is(30));
     }
 
     @Test(dataProvider = "testSubjects")
-    public void shouldWorkForMultipleRecosForSameProduct(RecommendationMetrics testee) {
-        Product product = new Product();
-        List<Product> twoProducts = asList(product);
+    public void shouldWorkForMultipleRecosForSameProduct(final RecommendationMetrics testee) {
+        final Product product = new Product();
+        final List<Product> twoProducts = asList(product);
 
-        Recommendation recoWithCost10 = new Recommendation(1,10, false);
-        Recommendation recoWithCost20 = new Recommendation(2,20, false);
-        List<Recommendation> firstSetOfRecos = asList(recoWithCost10, recoWithCost20);
+        final Recommendation recoWithCost10 = new Recommendation(1,10, false);
+        final Recommendation recoWithCost20 = new Recommendation(2,20, false);
+        final List<Recommendation> firstSetOfRecos = asList(recoWithCost10, recoWithCost20);
 
         given(recoFetcher.fetchRecosFor(product)).willReturn(firstSetOfRecos);
 
-        int result = testee.recoPriceSum(twoProducts);
+        final int result = testee.recoPriceSum(twoProducts);
         assertThat(result, is(30));
     }
 
     @Test(dataProvider = "testSubjects")
-    public void shouldNotConsiderSoldoutRecos(RecommendationMetrics testee) {
-        Product product = new Product();
-        List<Product> twoProducts = asList(product);
+    public void shouldNotConsiderSoldoutRecos(final RecommendationMetrics testee) {
+        final Product product = new Product();
+        final List<Product> twoProducts = asList(product);
 
-        Recommendation recoWithCost10 = new Recommendation(1,10, false);
-        Recommendation recoWithCost20 = new Recommendation(2,20, true);
-        List<Recommendation> firstSetOfRecos = asList(recoWithCost10, recoWithCost20);
+        final Recommendation recoWithCost10 = new Recommendation(1,10, false);
+        final Recommendation recoWithCost20 = new Recommendation(2,20, true);
+        final List<Recommendation> firstSetOfRecos = asList(recoWithCost10, recoWithCost20);
 
         given(recoFetcher.fetchRecosFor(product)).willReturn(firstSetOfRecos);
 
-        int result = testee.recoPriceSum(twoProducts);
+        final int result = testee.recoPriceSum(twoProducts);
         assertThat(result, is(10));
     }
 
     @SafeVarargs
-    private final <T> List<T> asList(T... items) {
+    private final <T> List<T> asList(final T... items) {
         return Arrays.asList(items);
     }
 }

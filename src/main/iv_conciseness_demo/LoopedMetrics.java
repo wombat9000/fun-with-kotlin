@@ -10,7 +10,7 @@ public class LoopedMetrics implements RecommendationMetrics {
 
     private final RecommendationFetcher recoFetcher;
 
-    LoopedMetrics(RecommendationFetcher recoFetcher) {
+    LoopedMetrics(final RecommendationFetcher recoFetcher) {
         this.recoFetcher = recoFetcher;
     }
 

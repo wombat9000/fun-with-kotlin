@@ -10,7 +10,7 @@ public class StreamedMetrics implements RecommendationMetrics {
 
     private final RecommendationFetcher recoFetcher;
 
-    StreamedMetrics(RecommendationFetcher recoFetcher) {
+    StreamedMetrics(final RecommendationFetcher recoFetcher) {
         this.recoFetcher = recoFetcher;
     }
 

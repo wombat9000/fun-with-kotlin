@@ -26,12 +26,13 @@ public class SearchMetricsTest {
         return new Object[][] {
                 {new LoopedMetrics(searchEngine)},
                 {new StreamedMetrics(searchEngine)},
+                {new KotlinMetrics(searchEngine)},
         };
     }
 
     @Test(dataProvider = "testSubjects")
     public void shouldHandleEmptyInput(SearchMetrics testee) {
-        Map<Produkt, Long> result = testee.fetchTopTwoResultCounts(emptyList());
+        Map<Produkt, Integer> result = testee.fetchTopTwoResultCounts(emptyList());
 
         assertThat(result, is(emptyMap()));
     }
@@ -41,9 +42,9 @@ public class SearchMetricsTest {
         Produkt someProdukt = new Produkt("someProdukt");
         given(searchEngine.searchFor("someTerm")).willReturn(singletonList(someProdukt));
 
-        Map<Produkt, Long> result = testee.fetchTopTwoResultCounts(singletonList("someTerm"));
+        Map<Produkt, Integer> result = testee.fetchTopTwoResultCounts(singletonList("someTerm"));
 
-        assertThat(result, is(singletonMap(someProdukt, 1L)));
+        assertThat(result, is(singletonMap(someProdukt, 1)));
     }
 
     @Test(dataProvider = "testSubjects")
@@ -52,9 +53,9 @@ public class SearchMetricsTest {
         given(searchEngine.searchFor("someTerm")).willReturn(singletonList(someProdukt));
         given(searchEngine.searchFor("anotherTerm")).willReturn(singletonList(someProdukt));
 
-        Map<Produkt, Long> result = testee.fetchTopTwoResultCounts(asList("someTerm", "anotherTerm"));
+        Map<Produkt, Integer> result = testee.fetchTopTwoResultCounts(asList("someTerm", "anotherTerm"));
 
-        assertThat(result, is(singletonMap(someProdukt, 2L)));
+        assertThat(result, is(singletonMap(someProdukt, 2)));
     }
 
     @Test(dataProvider = "testSubjects")
@@ -63,10 +64,10 @@ public class SearchMetricsTest {
         Produkt anotherProdukt = new Produkt("anotherProdukt");
         given(searchEngine.searchFor("someTerm")).willReturn(asList(someProdukt, anotherProdukt));
 
-        Map<Produkt, Long> result = testee.fetchTopTwoResultCounts(asList("someTerm"));
+        Map<Produkt, Integer> result = testee.fetchTopTwoResultCounts(asList("someTerm"));
 
-        assertThat(result.get(someProdukt), is(1L));
-        assertThat(result.get(anotherProdukt), is(1L));
+        assertThat(result.get(someProdukt), is(1));
+        assertThat(result.get(anotherProdukt), is(1));
     }
 
     @Test(dataProvider = "testSubjects")
@@ -76,10 +77,10 @@ public class SearchMetricsTest {
         Produkt disregardedProdukt = new Produkt("disregardedProdukt");
         given(searchEngine.searchFor("someTerm")).willReturn(asList(someProdukt, anotherProdukt, disregardedProdukt));
 
-        Map<Produkt, Long> result = testee.fetchTopTwoResultCounts(asList("someTerm"));
+        Map<Produkt, Integer> result = testee.fetchTopTwoResultCounts(asList("someTerm"));
 
-        assertThat(result.get(someProdukt), is(1L));
-        assertThat(result.get(anotherProdukt), is(1L));
+        assertThat(result.get(someProdukt), is(1));
+        assertThat(result.get(anotherProdukt), is(1));
         assertFalse(result.containsKey(disregardedProdukt));
     }
 
@@ -89,8 +90,8 @@ public class SearchMetricsTest {
         given(searchEngine.searchFor("someTerm")).willReturn(null);
         given(searchEngine.searchFor("anotherTerm")).willReturn(asList(someProdukt));
 
-        Map<Produkt, Long> result = testee.fetchTopTwoResultCounts(asList("someTerm", "anotherTerm"));
+        Map<Produkt, Integer> result = testee.fetchTopTwoResultCounts(asList("someTerm", "anotherTerm"));
 
-        assertThat(result.get(someProdukt), is(1L));
+        assertThat(result.get(someProdukt), is(1));
     }
 }

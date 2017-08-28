@@ -17,8 +17,8 @@ public class LoopedMetrics implements SearchMetrics {
 
     @NotNull
     @Override
-    public Map<Produkt, Long> fetchTopTwoResultCounts(@NotNull final List<String> searchTerms) {
-        final Map<Produkt, Long> result = new HashMap<>();
+    public Map<Produkt, Integer> fetchTopTwoResultCounts(@NotNull final List<String> searchTerms) {
+        final Map<Produkt, Integer> result = new HashMap<>();
 
         for(String searchTerm: searchTerms) {
             final List<Produkt> produkts = searchEngine.searchFor(searchTerm);
@@ -29,7 +29,7 @@ public class LoopedMetrics implements SearchMetrics {
 
             for (int i = 0, produktsSize = produkts.size(); i < produktsSize; i++) {
                 final Produkt produkt = produkts.get(i);
-                final Long currentCount = result.getOrDefault(produkt, 0L);
+                final Integer currentCount = result.getOrDefault(produkt, 0);
                 result.put(produkt, currentCount + 1);
                 if (i == 1) {
                     break;

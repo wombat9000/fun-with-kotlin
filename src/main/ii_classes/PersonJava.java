@@ -1,41 +1,55 @@
-package main.ii_classes;
+package ii_classes;
 
 public class PersonJava {
 
     private String firstName;
     private String lastName;
-    private String middleName;
-    private int age;
 
     public PersonJava(String firstName,
-                      String lastName, String middleName, int age) {
+                      String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.middleName = middleName;
-        this.age = age;
-    }
-
-    public String getLastName() {
-        return lastName;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public String getMiddleName() {
-        return middleName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public int getAge() {
-        return age;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    @Override
+    public String toString() {
+        return "PersonJava{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        PersonJava that = (PersonJava) o;
+
+        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
+        return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = firstName != null ? firstName.hashCode() : 0;
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        return result;
     }
 }

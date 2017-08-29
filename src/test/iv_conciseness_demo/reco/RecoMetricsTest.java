@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static java.util.Collections.emptyList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.BDDMockito.given;
@@ -33,9 +34,7 @@ public class RecoMetricsTest {
 
     @Test(dataProvider = "testSubjects")
     public void shouldHandleEmptyInput(final RecoMetrics testee) {
-        final List<Product> zeroProducts = asList();
-
-        final int result = testee.recoPriceSum(zeroProducts);
+        final int result = testee.recoPriceSum(emptyList());
 
         assertThat(result, is(0));
     }

@@ -1,20 +1,19 @@
 package i_syntax
 
-// i_syntax.main as top level function
+// as top level function
 fun main(args: Array<String>) {
     println("Hello World")
 }
 
-
-// i_syntax.main as method on class
-//class Main {
-//    companion object {
-//        @JvmStatic
-//        fun i_syntax.main(args: Array<String>) {
-//            println("Hello World from class")
-//        }
-//    }
-//}
+// as method on class
+class Main {
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            println("Hello World from class")
+        }
+    }
+}
 
 
 

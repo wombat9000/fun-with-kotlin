@@ -1,4 +1,4 @@
-package iv_conciseness_demo.search;
+package v_iterating_and_collections.search;
 
 import org.jetbrains.annotations.NotNull;
 

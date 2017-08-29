@@ -1,8 +1,8 @@
-package iv_conciseness_demo.reco;
+package v_iterating_and_collections.reco;
 
-import iv_conciseness_demo.reco.skeletons.Product;
-import iv_conciseness_demo.reco.skeletons.Recommendation;
-import iv_conciseness_demo.reco.skeletons.RecommendationFetcher;
+import v_iterating_and_collections.reco.skeletons.Product;
+import v_iterating_and_collections.reco.skeletons.Recommendation;
+import v_iterating_and_collections.reco.skeletons.RecommendationFetcher;
 
 import java.util.List;
 

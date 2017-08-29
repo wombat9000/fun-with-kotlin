@@ -1,4 +1,4 @@
-package iv_conciseness_demo.search
+package v_iterating_and_collections.search
 
 class KotlinMetrics(private val searchEngine: SearchEngine) : SearchMetrics {
     override fun fetchTopTwoResultCounts(searchTerms: List<String>): Map<Produkt, Int> {

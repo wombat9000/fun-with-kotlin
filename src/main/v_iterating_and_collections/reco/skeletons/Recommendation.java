@@ -1,4 +1,4 @@
-package iv_conciseness_demo.reco.skeletons;
+package v_iterating_and_collections.reco.skeletons;
 
 public class Recommendation {
     private final int id;

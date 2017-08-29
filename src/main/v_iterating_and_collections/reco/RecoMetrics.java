@@ -1,6 +1,6 @@
-package iv_conciseness_demo.reco;
+package v_iterating_and_collections.reco;
 
-import iv_conciseness_demo.reco.skeletons.Product;
+import v_iterating_and_collections.reco.skeletons.Product;
 
 import java.util.List;
 

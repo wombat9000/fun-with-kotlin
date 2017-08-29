@@ -9,7 +9,8 @@ fun withWhen(x: Int) {
     }
 
     when(x) {
+        13, 21 -> println("$x is 13 or 21")
         in 1..10 -> println("$x is between one and ten")
-        in listOf(1,2,3) -> println("$x contained in the list of 1,2,3")
+        in listOf(19, 5, 123) -> println("$x contained in the list of 19, 5, 123")
     }
 }

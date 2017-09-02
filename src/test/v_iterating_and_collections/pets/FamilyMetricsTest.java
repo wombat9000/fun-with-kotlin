@@ -36,7 +36,7 @@ public class FamilyMetricsTest {
 
     @Test(dataProvider = "testSubjects")
     public void shouldHandleEmptyInput(final FamilyMetrics testee) {
-        final int result = testee.petAgeSum(emptyList());
+        final int result = testee.reptileAgeSum(emptyList());
 
         assertThat(result, is(0));
     }
@@ -51,7 +51,7 @@ public class FamilyMetricsTest {
 
         given(petFinder.findPetsOf(person)).willReturn(pets);
 
-        final int result = testee.petAgeSum(singlePerson);
+        final int result = testee.reptileAgeSum(singlePerson);
         assertThat(result, is(10));
     }
 
@@ -70,7 +70,7 @@ public class FamilyMetricsTest {
         given(petFinder.findPetsOf(person)).willReturn(firstSetOfPets);
         given(petFinder.findPetsOf(anotherPerson)).willReturn(secondSetOfPets);
 
-        final int result = testee.petAgeSum(twoPeople);
+        final int result = testee.reptileAgeSum(twoPeople);
         assertThat(result, is(30));
     }
 
@@ -85,7 +85,7 @@ public class FamilyMetricsTest {
 
         given(petFinder.findPetsOf(person)).willReturn(pets);
 
-        final int result = testee.petAgeSum(twoPeople);
+        final int result = testee.reptileAgeSum(twoPeople);
         assertThat(result, is(30));
     }
 
@@ -100,7 +100,7 @@ public class FamilyMetricsTest {
 
         given(petFinder.findPetsOf(person)).willReturn(pets);
 
-        final int result = testee.petAgeSum(twoPeople);
+        final int result = testee.reptileAgeSum(twoPeople);
         assertThat(result, is(10));
     }
 }

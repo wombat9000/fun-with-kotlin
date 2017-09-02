@@ -15,7 +15,7 @@ public class StreamedMetrics implements FamilyMetrics {
     }
 
     @Override
-    public int petAgeSum(final List<Person> people) {
+    public int reptileAgeSum(final List<Person> people) {
         return people.stream()
                 .map(petFinder::findPetsOf)
                 .flatMap(List::stream)

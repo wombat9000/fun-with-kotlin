@@ -15,7 +15,7 @@ public class LoopedMetrics implements FamilyMetrics {
     }
 
     @Override
-    public int petAgeSum(final List<Person> people) {
+    public int reptileAgeSum(final List<Person> people) {
         int sum = 0;
 
         for (Person person : people) {

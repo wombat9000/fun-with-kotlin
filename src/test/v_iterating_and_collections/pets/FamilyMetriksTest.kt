@@ -32,7 +32,7 @@ class FamilyMetriksTest {
     fun shouldHandleEmptyInput(testee: FamilyMetrics) {
         val zeroPersons = listOf<Person>()
 
-        val result = testee.petAgeSum(zeroPersons)
+        val result = testee.reptileAgeSum(zeroPersons)
 
         assertThat(result, `is`(0))
     }
@@ -47,7 +47,7 @@ class FamilyMetriksTest {
 
         given(petFinder.findPetsOf(person)).willReturn(pets)
 
-        val result = testee.petAgeSum(singlePerson)
+        val result = testee.reptileAgeSum(singlePerson)
         assertThat(result, `is`(10))
     }
 
@@ -66,7 +66,7 @@ class FamilyMetriksTest {
         given(petFinder.findPetsOf(person)).willReturn(firstSetOfPets)
         given(petFinder.findPetsOf(anotherPerson)).willReturn(secondSetOfPets)
 
-        val result = testee.petAgeSum(twoPeople)
+        val result = testee.reptileAgeSum(twoPeople)
         assertThat(result, `is`(30))
     }
 
@@ -81,7 +81,7 @@ class FamilyMetriksTest {
 
         given(petFinder.findPetsOf(person)).willReturn(firstSetOfRecos)
 
-        val result = testee.petAgeSum(twoPets)
+        val result = testee.reptileAgeSum(twoPets)
         assertThat(result, `is`(30))
     }
 
@@ -96,7 +96,7 @@ class FamilyMetriksTest {
 
         given(petFinder.findPetsOf(person)).willReturn(firstSetOfPets)
 
-        val result = testee.petAgeSum(twoPersons)
+        val result = testee.reptileAgeSum(twoPersons)
         assertThat(result, `is`(10))
     }
 }

@@ -6,7 +6,7 @@ import v_iterating_and_collections.pets.skeletons.PetFinder;
 
 import java.util.List;
 
-public class StreamedMetrics implements FamilyMetrics {
+public class StreamedMetrics implements PetMetrics {
 
     private final PetFinder petFinder;
 

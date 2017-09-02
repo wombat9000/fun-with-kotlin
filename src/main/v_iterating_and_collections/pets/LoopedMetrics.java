@@ -6,7 +6,7 @@ import v_iterating_and_collections.pets.skeletons.PetFinder;
 
 import java.util.List;
 
-public class LoopedMetrics implements FamilyMetrics {
+public class LoopedMetrics implements PetMetrics {
 
     private final PetFinder recoFetcher;
 

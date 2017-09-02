@@ -4,6 +4,6 @@ import v_iterating_and_collections.pets.skeletons.Person;
 
 import java.util.List;
 
-public interface FamilyMetrics {
+public interface PetMetrics {
     int reptileAgeSum(List<Person> people);
 }

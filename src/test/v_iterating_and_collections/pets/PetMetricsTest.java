@@ -18,7 +18,7 @@ import static org.mockito.MockitoAnnotations.initMocks;
 import static v_iterating_and_collections.pets.skeletons.AnimalKind.CAT;
 import static v_iterating_and_collections.pets.skeletons.AnimalKind.LIZARD;
 
-public class FamilyMetricsTest {
+public class PetMetricsTest {
 
     @Mock
     private PetFinder petFinder;
@@ -35,14 +35,14 @@ public class FamilyMetricsTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    public void shouldHandleEmptyInput(final FamilyMetrics testee) {
+    public void shouldHandleEmptyInput(final PetMetrics testee) {
         final int result = testee.reptileAgeSum(emptyList());
 
         assertThat(result, is(0));
     }
 
     @Test(dataProvider = "testSubjects")
-    public void shouldWorkForSinglePerson(final FamilyMetrics testee) {
+    public void shouldWorkForSinglePerson(final PetMetrics testee) {
         final Person person = new Person();
         final List<Person> singlePerson = asList(person);
 
@@ -56,7 +56,7 @@ public class FamilyMetricsTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    public void shouldWorkForMultiplePersons(final FamilyMetrics testee) {
+    public void shouldWorkForMultiplePersons(final PetMetrics testee) {
         final Person person = new Person();
         final Person anotherPerson = new Person();
         final List<Person> twoPeople = asList(person, anotherPerson);
@@ -75,7 +75,7 @@ public class FamilyMetricsTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    public void shouldWorkForMultiplePetsForSamePerson(final FamilyMetrics testee) {
+    public void shouldWorkForMultiplePetsForSamePerson(final PetMetrics testee) {
         final Person person = new Person();
         final List<Person> twoPeople = asList(person);
 
@@ -90,7 +90,7 @@ public class FamilyMetricsTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    public void shouldOnlyConsiderReptiles(final FamilyMetrics testee) {
+    public void shouldOnlyConsiderReptiles(final PetMetrics testee) {
         final Person person = new Person();
         final List<Person> twoPeople = asList(person);
 

@@ -13,7 +13,7 @@ import v_iterating_and_collections.pets.skeletons.Person
 import v_iterating_and_collections.pets.skeletons.Pet
 import v_iterating_and_collections.pets.skeletons.PetFinder
 
-class FamilyMetriksTest {
+class PetMetriksTest {
 
     @Mock private
     lateinit var petFinder: PetFinder
@@ -29,7 +29,7 @@ class FamilyMetriksTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    fun shouldHandleEmptyInput(testee: FamilyMetrics) {
+    fun shouldHandleEmptyInput(testee: PetMetrics) {
         val zeroPersons = listOf<Person>()
 
         val result = testee.reptileAgeSum(zeroPersons)
@@ -38,7 +38,7 @@ class FamilyMetriksTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    fun shouldWorkForSinglePerson(testee: FamilyMetrics) {
+    fun shouldWorkForSinglePerson(testee: PetMetrics) {
         val person = Person()
         val singlePerson = listOf(person)
 
@@ -52,7 +52,7 @@ class FamilyMetriksTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    fun shouldWorkForMultiplePersons(testee: FamilyMetrics) {
+    fun shouldWorkForMultiplePersons(testee: PetMetrics) {
         val person = Person()
         val anotherPerson = Person()
         val twoPeople = listOf(person, anotherPerson)
@@ -71,7 +71,7 @@ class FamilyMetriksTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    fun shouldWorkForMultiplePetsForSamePerson(testee: FamilyMetrics) {
+    fun shouldWorkForMultiplePetsForSamePerson(testee: PetMetrics) {
         val person = Person()
         val twoPets = listOf(person)
 
@@ -86,7 +86,7 @@ class FamilyMetriksTest {
     }
 
     @Test(dataProvider = "testSubjects")
-    fun shouldOnlyConsiderReptiles(testee: FamilyMetrics) {
+    fun shouldOnlyConsiderReptiles(testee: PetMetrics) {
         val person = Person()
         val twoPersons = listOf(person)
 

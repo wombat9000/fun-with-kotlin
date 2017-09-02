@@ -8,7 +8,6 @@ class KotlinMetrics(private val recoFetcher: RecommendationFetcher) : RecoMetric
         return products.asSequence()
                 .flatMap { recoFetcher.fetchRecosFor(it).asSequence() }
                 .filter { it.isAvailable }
-                .map { it.cost }
-                .sum()
+                .sumBy { it.cost }
     }
 }

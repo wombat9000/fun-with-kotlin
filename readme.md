@@ -1,9 +1,33 @@
-// conciseness meme
-http://devhumor.com/media/honestly-this-is-probably-how-i-would-prefer-to-receive-friendly-emails?utm_content=bufferd0bb6&utm_medium=social&utm_source=facebook.com&utm_campaign=buffer
 
+#### Setup
 
-// docs:
-https://kotlinlang.org/docs/reference/
+- Clone the Repo
+```
+git clone https://github.com/wombat9000/fun-with-kotlin.git
+```
+- Initialise the Project
+```
+./gradlew idea
+```
+- Open the .ipr file with IntelliJ.
+- Install/Update Kotlin Plugin
 
-// Try kotlin online:
-https://try.kotlinlang.org/#/Examples/Hello,%20world!/Simplest%20version/Simplest%20version.kt
+#### Useful resources
+[Official Docs]
+
+[Kotlin Koans]
+
+##### Videos
+[GoogleIO Kotlin Intro]
+
+[Using Kotlin / Introducing Kotlin in your Company]
+
+##### misc
+[Conciseness DevHumor]
+
+[Conciseness DevHumor]: http://devhumor.com/media/honestly-this-is-probably-how-i-would-prefer-to-receive-friendly-emails
+[Official Docs]: https://kotlinlang.org/docs/reference/
+[Kotlin Koans]: https://try.kotlinlang.org/
+
+[GoogleIO Kotlin Intro]: https://www.youtube.com/watch?v=X1RVYt2QKQE
+[Using Kotlin / Introducing Kotlin in your Company]: https://www.youtube.com/watch?v=fPzxfeDJDzY
